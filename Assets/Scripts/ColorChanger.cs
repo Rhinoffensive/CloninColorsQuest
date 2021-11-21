@@ -5,10 +5,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+public enum PresetColor
+{
+    Red = 0xFF0000,
+    Green = 0x00FF00,
+    Blue = 0x0000FF,
+    Yellow = 0xFFFF00
+}
 public class ColorChanger : MonoBehaviour
 {
     private SpriteRenderer mySpriteRenderer;
-    public Color color = Color.black;
+    public PresetColor color;
 
 
     void Awake()
@@ -18,6 +26,11 @@ public class ColorChanger : MonoBehaviour
 
     private void Start()
     {
-        mySpriteRenderer.color = color;
+        Color theColor;
+        if (ColorUtility.TryParseHtmlString(color.ToString(), out theColor))
+        {
+            mySpriteRenderer.color = theColor;
+        }
+
     }
 }
