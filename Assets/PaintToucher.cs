@@ -9,7 +9,8 @@ public class PaintToucher : MonoBehaviour
     {
         if (other.tag == "Block")
         {
-            other.GetComponent<SpriteRenderer>().color = GetComponent<SpriteRenderer>().color; 
+            other.GetComponent<ColorChanger>().blockColorName = GetComponent<ColorChanger>().blockColorName;
+            other.GetComponent<SpriteRenderer>().color = GetComponent<SpriteRenderer>().color;
         }
     }
     // Update is called once per frame

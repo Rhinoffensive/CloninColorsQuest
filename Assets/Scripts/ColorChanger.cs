@@ -17,6 +17,7 @@ public class ColorChanger : MonoBehaviour
 {
     private SpriteRenderer mySpriteRenderer;
     public PresetColor color;
+    [HideInInspector] public string blockColorName;
 
 
     void Awake()
@@ -30,6 +31,7 @@ public class ColorChanger : MonoBehaviour
         if (ColorUtility.TryParseHtmlString(color.ToString(), out theColor))
         {
             mySpriteRenderer.color = theColor;
+            blockColorName = System.Enum.GetName(typeof(PresetColor), color);
         }
 
     }

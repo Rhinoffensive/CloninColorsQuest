@@ -18,12 +18,9 @@ public class Hazard : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Block"))
         {
-            print(GetComponent<SpriteRenderer>().color);
-            print(collision.GetComponent<SpriteRenderer>().color);
             if (GetComponent<SpriteRenderer>().color.Equals(collision.GetComponent<SpriteRenderer>().color))
             {
-                print("Same Color");
-                return;
+               return;
             }
             if (collision.gameObject.GetComponent<BlockMovement>().isActiveBool)
             {
