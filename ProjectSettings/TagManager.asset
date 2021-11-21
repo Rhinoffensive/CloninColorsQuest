@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Block
   - Gem
+  - Coin
   layers:
   - Default
   - TransparentFX
