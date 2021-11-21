@@ -8,8 +8,7 @@ using UnityEngine;
 public class ColorChanger : MonoBehaviour
 {
     private SpriteRenderer mySpriteRenderer;
-    public bool activate;
-    public string colorVal = "#FFFFFF";
+    public Color color = Color.black;
 
 
     void Awake()
@@ -19,13 +18,6 @@ public class ColorChanger : MonoBehaviour
 
     private void Start()
     {
-        if (activate)
-        {
-            var theColor = new Color();
-
-            // mySpriteRenderer.color = new Color();
-            if (ColorUtility.TryParseHtmlString(colorVal, out theColor))
-            { mySpriteRenderer.color = theColor; }
-        }
+        mySpriteRenderer.color = color;
     }
 }
