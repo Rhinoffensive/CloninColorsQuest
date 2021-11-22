@@ -4,14 +4,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameHandler : MonoBehaviour
 {
     [SerializeField] private BlockMovement[] allPlayerBlocks;
 
+    [SerializeField] Text youWonTxt;
+    [SerializeField] Text youLoseTxt;
+
+ 
     void Start()
     {
         AllPlayerBlocksArrayUpdate();
+        FindObjectOfType<FlagFinish>().captureFlagEvent += Won;
     }
 
     void Update()
@@ -19,6 +25,19 @@ public class GameHandler : MonoBehaviour
         BlockSelection();
     }
 
+    void Won()
+    {
+        FindObjectOfType<FlagFinish>().captureFlagEvent -= Won;
+        DisableBlocks();
+        youWonTxt.gameObject.SetActive(true);
+    }
+
+
+    void Lose()
+    {
+        DisableBlocks();
+        youLoseTxt.gameObject.SetActive(true);
+    }
     private void BlockSelection()
     {
         if (Input.GetMouseButtonDown(0))
@@ -67,6 +86,7 @@ public class GameHandler : MonoBehaviour
         }
     }
 
+    
     private void ActiveBlockMinusOne()
     {
         AllPlayerBlocksArrayUpdate();
@@ -89,6 +109,16 @@ public class GameHandler : MonoBehaviour
                     break;
                 }
             }
+        }
+    }
+
+
+    void DisableBlocks()
+    {
+        AllPlayerBlocksArrayUpdate();
+        for(int i = 0; i < allPlayerBlocks.Length; i++)
+        {
+            allPlayerBlocks[i].GetComponent<BlockMovement>().isActiveBool = false;
         }
     }
 }
