@@ -23,16 +23,17 @@ public class ColorChanger : MonoBehaviour
     void Awake()
     {
         mySpriteRenderer = GetComponent<SpriteRenderer>();
-    }
-
-    private void Start()
-    {
         Color theColor;
         if (ColorUtility.TryParseHtmlString(color.ToString(), out theColor))
         {
             mySpriteRenderer.color = theColor;
             blockColorName = System.Enum.GetName(typeof(PresetColor), color);
         }
+    }
+
+    private void Start()
+    {
+      
 
     }
 }
