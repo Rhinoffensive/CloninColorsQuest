@@ -4,13 +4,19 @@ using UnityEngine;
 
 public class PaintToucher : MonoBehaviour
 {
-  
+
+    private void Awake()
+    {
+       // GetComponent<ColorChanger>().gameObject.SetActive(false);
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Block")
         {
-            other.GetComponent<ColorChanger>().blockColorName = GetComponent<ColorChanger>().blockColorName;
-            other.GetComponent<SpriteRenderer>().color = GetComponent<SpriteRenderer>().color;
+
+            other.GetComponent<ColorChanger>().blockColorName = GetComponentInParent<ColorChanger>().blockColorName;
+            other.GetComponent<SpriteRenderer>().color = GetComponentInParent<SpriteRenderer>().color;
         }
     }
     // Update is called once per frame
